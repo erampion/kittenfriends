@@ -1,12 +1,12 @@
 @font-face {
-  font-family: 'SEGA LOGO FONT';
+  font-family: 'Vacer Serif Personal Bold';
   font-style: normal;
   font-weight: normal;
-  src: local('SEGA LOGO FONT'), url('SEGA.woff') format('woff');
+  src: local('Vacer Serif Personal Bold'), url('VacerSerifBoldPersonal.woff') format('woff');  
   }
 
   h1 {
-    color: rgb(135, 135, 179);
-    font-family: 'SEGA LOGO FONT';
-    font-weight: 200;
+    font-family: 'Vacer Serif Personal Bold';
+    color: rgb(14, 48, 94);
   }
+

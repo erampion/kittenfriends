@@ -1,21 +1,21 @@
+import React from "react";
+import Card from "./Card";
 
-import React from 'react';
-import Card from './Card';
-
-const CardList = ({ robots }) => {
+const CardList = ( {kitten} ) => {
   return (
     <div>
       {
-        robots.map((user, i) => {
+        kitten.map((user, i) => {
           return (
             <Card 
-              key={robots[i].id}
-              id={robots[i].id} 
-              name={robots[i].name} 
-              email={robots[i].email}
+              key={kitten[i].id} 
+              // id={kitten[i].id} 
+              name={kitten[i].name} 
+              house={kitten[i].house}
+              species={kitten[i].species}
             />
           );
-        })  
+        })
       }
     </div>
   );

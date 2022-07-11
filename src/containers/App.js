@@ -1,48 +1,46 @@
 import React, { Component } from "react";
-import './App.css';
-import CardList from '../components/CardList';
-import SearchBox from '../components/SearchBox';
+import CardList from "../components/CardList";
 import Scroll from '../components/Scroll';
-// import { robots } from './robots';
+// import {kitten} from './kitten';
+import SearchBox from '../components/SearchBox';
+import './App.css';
 
 
 class App extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
-      robots: [],
-      searchfield: '',
+      kittens: [],
+      searchfield: ''
     }
   }
 
   componentDidMount() {
-    fetch('https://jsonplaceholder.typicode.com/users')
+    fetch('https://hp-api.herokuapp.com/api/characters')
       .then(response => response.json())
-      .then(users => this.setState({ robots: users}));
+      .then(users => this.setState({kittens: users}))
   }
 
-  searchValueEntered = (e) => {
-    this.setState({ searchfield: e.target.value });    
-  }
+    onSearchChange = (event) => {
+      this.setState({searchfield: event.target.value})
+    }
+  
 
   render() {
-    const { robots, searchfield } = this.state;
-    const fileteredRobots = robots.filter((robot) => {
-      return robot.name.toLowerCase().includes(searchfield.toLowerCase());
-    })
-    return (robots.length === 0) ?
-        <h1 className='tc'>Loading</h1> :
-        (
-          <div className='tc'>
-            <h1 className='f1'>RoboFriends</h1>
-            <SearchBox searchValue={this.searchValueEntered}/>
-            <Scroll>
-              <CardList robots={ fileteredRobots }/>
-            </Scroll>            
-          </div>
-        );
-  }
+    const { kittens, searchfield } = this.state;
+    const filteredKittens = kittens.filter(kitten => {
+        return kitten.name.toLowerCase().includes(searchfield.toLowerCase())
+      })
+    return !kittens.length ? 
+      <h1 className="tc f1">LOADING</h1> :
+        <div className="tc">
+          <h1 className="f1">KITTEN FRIENDS!</h1>
+          <SearchBox searchChange = {this.onSearchChange}/>
+          <Scroll>
+            <CardList kitten = {filteredKittens}/>
+          </Scroll>
+        </div>
+      }
+    }
 
-}
-
-export default App;
+export default App
